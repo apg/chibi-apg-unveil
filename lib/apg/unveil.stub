@@ -1,0 +1,9 @@
+;;> An FFI wrapper for OpenBSD's unveil(2) system call.
+
+(c-system-include "unistd.h")
+
+(cond-expand
+  (bsd
+     (define-c int unveil (string string)))
+  (else
+     #f))
