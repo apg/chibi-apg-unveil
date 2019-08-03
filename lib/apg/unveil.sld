@@ -2,7 +2,9 @@
   (export unveil)
   (import (chibi))
   (cond-expand
-     (openbsd
-        (include-shared "unveil"))
-     (else
-        (define (unveil a b) 0))))
+     (chibi
+        (cond-expand
+             (openbsd (include-shared "unveil"))
+             (else (define (unveil a b) 0))))
+     (else #f)))
+        
